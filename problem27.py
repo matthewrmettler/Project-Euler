@@ -5,8 +5,9 @@ https://projecteuler.net/problem=27
 
 Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with n = 0.
 
-Status: Complete?
+Status: Complete, not officially submitted
 -59231
+Correct according to https://code.google.com/p/projecteuler-solutions/wiki/ProjectEulerSolutions
 [Finished in 3.6s]
 '''
 import math

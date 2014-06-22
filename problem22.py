@@ -5,8 +5,9 @@ https://projecteuler.net/problem=22
 
 What is the total of all the name scores in the file?
 
-Status: Complete, not submitted
+Status: Complete, not submitted officially
 871198282
+Correct according to https://code.google.com/p/projecteuler-solutions/wiki/ProjectEulerSolutions
 [Finished in 0.1s]
 '''
 import math
