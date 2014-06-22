@@ -9,5 +9,4 @@ HINT: Some products can be obtained in more than one way so be sure to only incl
 
 Status: Incomplete
 Will check according to https://code.google.com/p/projecteuler-solutions/wiki/ProjectEulerSolutions
-[Finished in 3.6s]
 '''
