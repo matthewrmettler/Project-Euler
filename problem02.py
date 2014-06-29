@@ -6,26 +6,14 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 Status: Correct
 '''
-import math
-
-sum = 0
-
 fibonacci = [1,2]
 
 def nextFib():
 	fibonacci.append(fibonacci[-1] + fibonacci[-2])
 
-	return fibonacci[-1]
-
-while fibonacci[-1] < 4000000:
+while fibonacci[-1] < 4000000: 
 	nextFib()
 
 fibonacci = fibonacci[0:-1]
 
-sum = 0
-for num in fibonacci:
-	if num%2 == 0:
-		sum = sum + num
-print sum
-
-
+print(sum(x for x in fibonacci if x % 2 == 0))

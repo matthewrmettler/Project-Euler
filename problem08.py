@@ -8,7 +8,7 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 Status: Correct
 '''
 
-filename = 'problem8_data.txt'
+filename = 'problem08_data.txt'
 number = []
 maxProduct = 0
 
@@ -28,7 +28,6 @@ with open(filename) as f:
 		if c != '\n':
 			number.append(c)
 del number[-1] #remove eof blank character
-print(len(number))
 
 for i in range(0,1000-12):
 	checkProduct(i)

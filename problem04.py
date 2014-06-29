@@ -7,17 +7,5 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 Status: Correct
 '''
-import math
-
-largest = 0
-
-def isPalindrome(num):
-	return str(num) == str(num)[::-1]
-
-for i in range(1, 999):
-	for j in range(1, 999):
-		if largest < i*j and isPalindrome(i*j):
-			largest = i*j
-
-print(largest)
+print(max([x*y for x in range(999) for y in range(999) if str(x*y) == str(x*y)[::-1]]))
 

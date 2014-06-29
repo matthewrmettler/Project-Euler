@@ -15,13 +15,10 @@ prime = [2]
 
 count = 3
 def addPrime(num):
-	end = int(math.ceil(math.sqrt(num)))
-	for i in range(2, end+1):
-		if num % i == 0:
-			return False
-	#is prime
-	prime.append(num)
-	return True
+	if isPrime(num): prime.append(num)
+
+def isPrime(n):
+	return not [x for x in range(2, int(math.sqrt(n))+1) if n%x == 0]
 
 while len(prime) < 10001:
 	addPrime(count)
