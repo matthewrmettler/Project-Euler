@@ -5,9 +5,7 @@ https://projecteuler.net/problem=31
 
 How many different ways can 2 pounds be made using any number of coins?
 
-Status: Complete, recursive solution
-Correct according to https://code.google.com/p/projecteuler-solutions/wiki/ProjectEulerSolutions
-[Finished in 0.1s]
+Status: Correct
 '''
 coins = [1, 2, 5, 10, 20, 50, 100, 200]
 coins = coins[::-1]
