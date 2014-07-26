@@ -5,8 +5,7 @@ https://projecteuler.net/problem=34
 
 Find the sum of all numbers which are equal to the sum of the factorial of their digits.
 
-Status: Complete
-Correct according to https://code.google.com/p/projecteuler-solutions/wiki/ProjectEulerSolutions
+Status: Correct
 '''
 factorials = [1]
 def init_factorials():

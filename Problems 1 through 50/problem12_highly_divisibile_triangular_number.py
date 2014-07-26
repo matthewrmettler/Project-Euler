@@ -16,7 +16,6 @@ factor_count = [1]
 
 def addTriNum():
 	triangle_numbers.append(triangle_numbers[-1] + len(triangle_numbers) + 1)
-	#print("Added " + str(triangle_numbers[-1]))
 	return
 
 def countFactors(number):
@@ -31,11 +30,9 @@ def countFactors(number):
 		count *= (power+1)
 	if n > 1:
 		count *= 2
-	#print("factors for " + str(number) + ": " + str(count))
 	factor_count.append(count)
 	return
 
-#main loop
 while factor_count[-1] < 500:
 	addTriNum()
 	countFactors(triangle_numbers[-1])
