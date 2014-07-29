@@ -32,7 +32,7 @@ def get_nth_pentagonal(n):
 	return n*(3*n-1)/2;
 
 while(True):
-	pairs.extend([[x, get_nth_pentagonal(n)] for x in pentagonals])
+	pairs.extend([[x, get_nth_pentagonal(n)] for x in pentagonals if x > 2*n + 1])
 	pentagonals.append(get_nth_pentagonal(n))
 	if n % 300 == 0:
 		print("n = \t{}\t\t({} sec)\t\tpentagonal(n) = \t{}\t\tpairs = {}\t\tremoved = {}".format(str(n).zfill(4), "%.2f" % (time() - start_time), pentagonals[-1], len(pairs), removed))
