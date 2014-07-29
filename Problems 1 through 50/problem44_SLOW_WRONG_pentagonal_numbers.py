@@ -16,10 +16,10 @@ Find the pair of pentagonal numbers, Pj and Pk, for which their sum and
 difference are pentagonal and D = |Pk − Pj| is minimised; what is the 
 value of D?
 
-Status: Correct, but slow (~70 secs on dillon's PC)
+Status: Correct, but slow (~70 secs on dillon's PC, ~90 on mine)
 '''
 from time import time
-
+from bisect import bisect
 pentagonals = [1, 5]
 pairs = [[1,5]]
 n = 3
@@ -32,14 +32,16 @@ def get_nth_pentagonal(n):
 	return n*(3*n-1)/2;
 
 while(True):
-	pairs.extend([[x, get_nth_pentagonal(n)] for x in pentagonals])
+	pairs.extend([[x, get_nth_pentagonal(n)] for x in pentagonals[bisect(pentagonals, 2*n+1):]])
 	pentagonals.append(get_nth_pentagonal(n))
 	if n % 300 == 0:
 		print("n = \t{}\t\t({} sec)\t\tpentagonal(n) = \t{}\t\tpairs = {}\t\tremoved = {}".format(str(n).zfill(4), "%.2f" % (time() - start_time), pentagonals[-1], len(pairs), removed))
 		for num in xrange(len(pairs)):
 			pair = pairs[num]
-			if pair[1] - pair[0] in pentagonals:
-				if pair[0]+pair[1] in pentagonals:
+			#print("Searching for {}-{} in {}".format(pair[1], pair[0], pentagonals[bisect(pentagonals, pair[1]-pair[0]):bisect(pentagonals, pair[0])] ))
+			#print("Searching for {}+{} in {}".format(pair[1], pair[0], pentagonals[bisect(pentagonals, pair[1]):]))
+			if pair[1] - pair[0] in pentagonals[bisect(pentagonals, pair[1]-pair[0]):bisect(pentagonals, pair[0])]:
+				if pair[1] + pair[0] in pentagonals[bisect(pentagonals, pair[1]):]:
 					print("--------\n{} and {} is a valid pair!\n--------".format(pair[0], pair[1]))
 					this_d = abs(pair[0] - pair[1])
 					print("\tFound D is {}".format(this_d))
