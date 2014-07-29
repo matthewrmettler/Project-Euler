@@ -16,7 +16,7 @@ Find the pair of pentagonal numbers, Pj and Pk, for which their sum and
 difference are pentagonal and D = |Pk − Pj| is minimised; what is the 
 value of D?
 
-Status: Incomplete
+Status: Correct, but slow (~70 secs on dillon's PC, ~93 sec on mine)
 '''
 from time import time
 
@@ -32,15 +32,10 @@ def get_nth_pentagonal(n):
 	return n*(3*n-1)/2;
 
 while(True):
-	if n % 10 == 0:
-	 	pentagonals = [x for x in pentagonals if x > 2*n+1]
-		print(pentagonals)
- 	if n == 30: break
 	pairs.extend([[x, get_nth_pentagonal(n)] for x in pentagonals])
 	pentagonals.append(get_nth_pentagonal(n))
-	if n == 100: break
 	if n % 300 == 0:
-		print("n = \t{}\t\t({} sec)\t\tpentagonal(n) = \t{}\t\tlen(pentagonals) = {}\t\tpairs = {}\t\tremoved = {}".format(str(n).zfill(4), "%.2f" % (time() - start_time), pentagonals[-1], len(pentagonals), len(pairs), removed))
+		print("n = \t{}\t\t({} sec)\t\tpentagonal(n) = \t{}\t\tpairs = {}\t\tremoved = {}".format(str(n).zfill(4), "%.2f" % (time() - start_time), pentagonals[-1], len(pairs), removed))
 		for num in xrange(len(pairs)):
 			pair = pairs[num]
 			if pair[1] - pair[0] in pentagonals:
@@ -60,5 +55,5 @@ while(True):
 		for i in range(len(toDelete)-1,-1,-1):
 			del pairs[toDelete[i]]
 		toDelete = []
-					
+
 	n += 1
