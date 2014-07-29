@@ -31,23 +31,20 @@ def valid_pair(n, m):
 	if (n-m) in pentagonals:
 		if (n+m) in pentagonals:
 			return True
-	'''
-	if n+m < pentagonals[-1]:
-		pairs.remove([n,m])
-		removed += 1
-	'''
 	return False
 
 n = 3
+toDelete = []
 while(True):
 	pairs.extend([[x, get_nth_pentagonal(n)] for x in pentagonals])
 	pentagonals.append(get_nth_pentagonal(n))
 	n += 1
+
 	if n % 200 == 0:
 		print("n is {}".format(n))
-	if n % 1000 == 0:
 		print("pairs is of size {} (removed {})".format(len(pairs), removed))
-		for pair in pairs:
+		for num in range(len(pairs)):
+			pair = pairs[num]
 			if valid_pair(pair[0], pair[1]):
 				this_d = abs(pair[0] - pair[1])
 				if D == 0:
@@ -57,3 +54,10 @@ while(True):
 					D = this_d
 					print("New D:{}".format(D))
 					exit()
+			else:
+				if pair[0]+pair[1] < pentagonals[-1]:
+					toDelete.append(num)
+					removed += 1
+		for i in range(len(toDelete)-1,0,-1):
+			del pairs[toDelete[i]]
+		toDelete = []
