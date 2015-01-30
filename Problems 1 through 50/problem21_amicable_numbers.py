@@ -78,7 +78,7 @@ def checkAmicable(n):
 
 #main
 generatePrimes(upperLimit)
-for i in range(2,10001):
+for i in range(2,10000):
 	#getPrimeFactors(i)
 	checkAmicable(i)
 
