@@ -6,13 +6,13 @@ https://projecteuler.net/problem=81
 Find the minimal path sum, in matrix.txt, a 31K text file containing a 80 by 80
  matrix, from the top left to the bottom right by only moving right and down.
 
-Status: Incomplete
+Status: Correct
 '''
 
 matrix = []
 sum_matrix = []
-#file = 'problem81_matrix.txt'
-file = 'test_matrix.txt'
+file = 'problem81_matrix.txt'
+#file = 'test_matrix.txt'
 with open(file, 'r') as f:
 	for line in f:
 		matrix.append(map(int, line.split(',')))
@@ -29,9 +29,6 @@ for i in range(size-2, -1, -1):
 #dynamic programming approach
 for x in range(size-2, -1, -1):
 	for y in range(size-2, -1, -1):
-		sum_matrix[x][y] = min(sum_matrix[x][y], matrix[x][y] + sum_matrix[x+1][y], matrix[x][y] + sum_matrix[x][y+1])
-		for line in sum_matrix:
-			print(line)
-		print("---")
+		sum_matrix[x][y] = min(matrix[x][y] + sum_matrix[x+1][y], matrix[x][y] + sum_matrix[x][y+1])
 
 print(sum_matrix[0][0])
