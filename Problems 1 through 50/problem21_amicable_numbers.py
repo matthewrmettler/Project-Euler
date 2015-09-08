@@ -14,11 +14,7 @@ Let d(n) be defined as the sum of proper divisors of n (numbers less than
 
 Evaluate the sum of all the amicable numbers under 10000.
 
-Status: Complete, not sure if correct
-Site is down, so I can't check, but it returned:
-5736396
-
-after 1.1 seconds
+Status: Correct
 '''
 import math
 from collections import Counter
@@ -53,33 +49,51 @@ def getPrimeFactors(n):
 			if x > n: break
 			if n % x == 0:
 				primes.append(x)
-				list = getPrimeFactors(n/x)
-				for i in list:
+				pf_list = getPrimeFactors(n/x)
+				for i in pf_list:
 					primes.append(i)
 				break
 	return primes
 
 def sumOfProperDivisors(n):
-	dict = Counter(getPrimeFactors(n))
+	"""Use prime factors to calculate.
+	See: http://math.stackexchange.com/questions/22721/is-there-a-formula-to-calculate-the-sum-of-all-proper-divisors-of-a-number
+	"""
+	pf_dict = Counter(getPrimeFactors(n))
 	keyproduct = 1
-	for k, v in dict.items():
+	for k, v in pf_dict.items():
 		keysum = 0
 		for i in range(0,v+1):
-			keysum += k**v
+			keysum += k**i
 		keyproduct *= keysum
 	result = keyproduct - n 
 	return result
 
 def checkAmicable(n):
-	if (n%100 == 0): print("checkAmicable: " + str(n))
-	sum = sumOfProperDivisors(n)
-	if n == sumOfProperDivisors(sum):
-		amicableNumbers.append(n)
+	if (n%1000 == 0): print("checkAmicable: " + str(n))
+	sum_pd = sumOfProperDivisors(n)
+	if (n == sumOfProperDivisors(sum_pd)) and (n != sum_pd):
+		if n < 10000:
+			amicableNumbers.append(n)
+		if sum_pd < 10000:
+			amicableNumbers.append(sum_pd)
+		return True
+	return False
 
-#main
-generatePrimes(upperLimit)
-for i in range(2,10000):
-	#getPrimeFactors(i)
-	checkAmicable(i)
 
-print(sum(amicableNumbers))
+def test():
+	generatePrimes(upperLimit)
+	print(sumOfProperDivisors(220))
+	print(sumOfProperDivisors(284))
+	print(checkAmicable(220))
+
+def main():
+	generatePrimes(upperLimit)
+	for i in range(2,10000):
+		checkAmicable(i)
+	result = sum(set(amicableNumbers))
+	print(result)
+
+if __name__ == "__main__":
+	#test()
+	main()

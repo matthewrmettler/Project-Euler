@@ -26,7 +26,7 @@ two abundant numbers is less than this limit.
 Find the sum of all the positive integers which cannot be written as the
 sum of two abundant numbers.
 
-Status: Incomplete
+Status: Correct
 '''
 import math
 import itertools
@@ -49,7 +49,7 @@ def generatePrimes(upperLimit):
 			primeNumbers.append(n)
 
 def getPrimeFactors(n):
-	if n < 0 or n > 10000:
+	if n < 0 or n > upperLimit:
 		return []
 	if n in primeFactors:
 		return primeFactors[n]
@@ -108,4 +108,5 @@ def main():
 	print("Generated %s abundantNumbers" % len(abundantNumbers))
 	getNonSum()
 
-main()
+if __name__ == "__main__":
+	main()
