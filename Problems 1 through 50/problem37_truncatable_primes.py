@@ -1,6 +1,6 @@
 '''
 Author: Matthew Mettler
-Project Euler, Problem 36
+Project Euler, Problem 37
 https://projecteuler.net/problem=37
 
 The number 3797 has an interesting property. Being prime itself, it is possible 
